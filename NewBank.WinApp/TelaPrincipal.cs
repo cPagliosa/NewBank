@@ -1,8 +1,8 @@
 namespace NewBank.WinApp
 {
-    public partial class Form1 : Form
+    public partial class TelaPrincipal : Form
     {
-        public Form1()
+        public TelaPrincipal()
         {
             InitializeComponent();
         }

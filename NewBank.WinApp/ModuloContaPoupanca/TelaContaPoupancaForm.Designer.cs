@@ -72,9 +72,10 @@
             btnGravar.Location = new Point(320, 345);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(130, 48);
-            btnGravar.TabIndex = 1;
+            btnGravar.TabIndex = 4;
             btnGravar.Text = "Gravar";
             btnGravar.UseVisualStyleBackColor = true;
+            btnGravar.Click += btnGravar_Click;
             // 
             // btnCancelar
             // 
@@ -84,9 +85,10 @@
             btnCancelar.Location = new Point(467, 345);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(130, 48);
-            btnCancelar.TabIndex = 2;
+            btnCancelar.TabIndex = 5;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // txtEndereco
             // 
@@ -96,7 +98,7 @@
             txtEndereco.Location = new Point(136, 163);
             txtEndereco.Name = "txtEndereco";
             txtEndereco.Size = new Size(461, 39);
-            txtEndereco.TabIndex = 0;
+            txtEndereco.TabIndex = 1;
             // 
             // lblEndereco
             // 
@@ -117,7 +119,7 @@
             txtTaxa.Location = new Point(136, 282);
             txtTaxa.Name = "txtTaxa";
             txtTaxa.Size = new Size(152, 39);
-            txtTaxa.TabIndex = 0;
+            txtTaxa.TabIndex = 3;
             // 
             // lblTaxa
             // 
@@ -138,7 +140,7 @@
             txtNumero.Location = new Point(231, 224);
             txtNumero.Name = "txtNumero";
             txtNumero.Size = new Size(219, 39);
-            txtNumero.TabIndex = 0;
+            txtNumero.TabIndex = 2;
             // 
             // lblNumero
             // 
@@ -205,6 +207,7 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "TelaContaPoupancaForm";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "TelaContaPoupancaForm";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

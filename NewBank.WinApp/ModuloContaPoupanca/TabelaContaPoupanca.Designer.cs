@@ -34,6 +34,7 @@
             // 
             // grid
             // 
+            grid.BackgroundColor = Color.FromArgb(34, 40, 49);
             grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             grid.Dock = DockStyle.Fill;
             grid.Location = new Point(0, 0);
@@ -46,6 +47,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(34, 40, 49);
             Controls.Add(grid);
             Name = "TabelaContaPoupanca";
             Size = new Size(542, 292);

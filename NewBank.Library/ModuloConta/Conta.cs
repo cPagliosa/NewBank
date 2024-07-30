@@ -63,6 +63,12 @@ namespace NewBank.Dominio.ModuloConta
             if (Convert.ToString(this.Numero).Length < 3)
                 erros.Add("O campo \\\"Numero\\\" necessita de ao menos 3 caractere");
 
+            if (this.Titular.Nome.Length < 3)
+                erros.Add("O campo \\\"Nome\\\" necessita de ao menos 3 caractere");
+
+            if (this.Titular.Endereco.Length < 3)
+                erros.Add("O campo \\\"Endereço\\\" necessita de ao menos 3 caractere");
+
             return erros;
         }
     }

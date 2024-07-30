@@ -84,7 +84,7 @@ namespace NewBank.WinApp.ModuloContaPoupanca
 
             CarregarDadosTabela();
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"Uma conta poupaça do titular: \"{novaConta.Titular.Nome}\" foi editada com sucesso!");
+            TelaPrincipalForm.Instancia.AtualizarRodape($"Uma conta poupaça do titular: \"{contaSelecionada.Titular.Nome}\" foi editada com sucesso!");
         }
 
         public override void Excluir()
@@ -118,7 +118,7 @@ namespace NewBank.WinApp.ModuloContaPoupanca
 
             CarregarDadosTabela();
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"Uma conta corrente do titular: \"{novaConta.Titular.Nome}\" foi excluida com sucesso!");
+            TelaPrincipalForm.Instancia.AtualizarRodape($"Uma conta corrente do titular: \"{contaSelecionada.Titular.Nome}\" foi excluida com sucesso!");
         }
 
         public override void PDF()

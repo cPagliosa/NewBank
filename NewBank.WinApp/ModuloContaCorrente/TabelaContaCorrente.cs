@@ -20,7 +20,7 @@ namespace NewBank.WinApp.ModuloContaCorrente
             grid.Rows.Clear();
 
             foreach (ContaCorrente i in contas)
-                grid.Rows.Add(i.Id, i.Titular, i.Numero,i.Saldo,i.Limite);
+                grid.Rows.Add(i.Id, i.Titular.Nome, i.Numero,i.Saldo,i.Limite);
         }
 
         public int ObterRegistroSelecionado()
@@ -34,6 +34,7 @@ namespace NewBank.WinApp.ModuloContaCorrente
             {
                 new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id" },
                 new DataGridViewTextBoxColumn { DataPropertyName = "Titular", HeaderText = "Titular" },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Numero", HeaderText = "Numero" },
                 new DataGridViewTextBoxColumn { DataPropertyName = "Saldo", HeaderText = "Saldo" },
                 new DataGridViewTextBoxColumn { DataPropertyName = "Limite", HeaderText = "Limite" },
             };

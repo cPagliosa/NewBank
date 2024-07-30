@@ -35,12 +35,12 @@
             txtId = new TextBox();
             label1 = new Label();
             panel1 = new Panel();
-            lblNumero = new Label();
-            txtNumero = new TextBox();
-            lblEndereco = new Label();
             txtEndereco = new TextBox();
-            lblLimite = new Label();
+            lblEndereco = new Label();
             txtLimite = new TextBox();
+            lblLimite = new Label();
+            txtNumero = new TextBox();
+            lblNumero = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -52,9 +52,10 @@
             btnGravar.Location = new Point(320, 345);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(130, 48);
-            btnGravar.TabIndex = 1;
+            btnGravar.TabIndex = 4;
             btnGravar.Text = "Gravar";
             btnGravar.UseVisualStyleBackColor = true;
+            btnGravar.Click += btnGravar_Click;
             // 
             // btnCancelar
             // 
@@ -64,9 +65,10 @@
             btnCancelar.Location = new Point(467, 345);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(130, 48);
-            btnCancelar.TabIndex = 2;
+            btnCancelar.TabIndex = 5;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // txtNome
             // 
@@ -111,7 +113,6 @@
             label1.Size = new Size(37, 32);
             label1.TabIndex = 0;
             label1.Text = "Id";
-            label1.Click += label1_Click;
             // 
             // panel1
             // 
@@ -132,30 +133,16 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(635, 406);
             panel1.TabIndex = 1;
-            panel1.Paint += this.panel1_Paint;
             // 
-            // lblNumero
+            // txtEndereco
             // 
-            lblNumero.AutoSize = true;
-            lblNumero.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblNumero.ForeColor = Color.FromArgb(0, 173, 181);
-            lblNumero.Location = new Point(9, 224);
-            lblNumero.Name = "lblNumero";
-            lblNumero.Size = new Size(216, 32);
-            lblNumero.TabIndex = 0;
-            lblNumero.Text = "Numero da conta";
-            lblNumero.Click += this.lblNumero_Click;
-            // 
-            // txtNumero
-            // 
-            txtNumero.BackColor = Color.FromArgb(238, 238, 238);
-            txtNumero.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtNumero.ForeColor = Color.FromArgb(0, 173, 181);
-            txtNumero.Location = new Point(231, 224);
-            txtNumero.Name = "txtNumero";
-            txtNumero.Size = new Size(219, 39);
-            txtNumero.TabIndex = 0;
-            txtNumero.TextChanged += textBox1_TextChanged;
+            txtEndereco.BackColor = Color.FromArgb(238, 238, 238);
+            txtEndereco.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtEndereco.ForeColor = Color.FromArgb(0, 173, 181);
+            txtEndereco.Location = new Point(136, 163);
+            txtEndereco.Name = "txtEndereco";
+            txtEndereco.Size = new Size(461, 39);
+            txtEndereco.TabIndex = 1;
             // 
             // lblEndereco
             // 
@@ -167,18 +154,16 @@
             lblEndereco.Size = new Size(120, 32);
             lblEndereco.TabIndex = 0;
             lblEndereco.Text = "Endereço";
-            lblEndereco.Click += this.lblEndereco_Click;
             // 
-            // txtEndereco
+            // txtLimite
             // 
-            txtEndereco.BackColor = Color.FromArgb(238, 238, 238);
-            txtEndereco.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtEndereco.ForeColor = Color.FromArgb(0, 173, 181);
-            txtEndereco.Location = new Point(136, 163);
-            txtEndereco.Name = "txtEndereco";
-            txtEndereco.Size = new Size(461, 39);
-            txtEndereco.TabIndex = 0;
-            txtEndereco.TextChanged += this.txtEndereco_TextChanged;
+            txtLimite.BackColor = Color.FromArgb(238, 238, 238);
+            txtLimite.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtLimite.ForeColor = Color.FromArgb(0, 173, 181);
+            txtLimite.Location = new Point(136, 282);
+            txtLimite.Name = "txtLimite";
+            txtLimite.Size = new Size(152, 39);
+            txtLimite.TabIndex = 3;
             // 
             // lblLimite
             // 
@@ -190,18 +175,27 @@
             lblLimite.Size = new Size(87, 32);
             lblLimite.TabIndex = 0;
             lblLimite.Text = "Limite";
-            lblLimite.Click += this.lblNumero_Click;
             // 
-            // txtLimite
+            // txtNumero
             // 
-            txtLimite.BackColor = Color.FromArgb(238, 238, 238);
-            txtLimite.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtLimite.ForeColor = Color.FromArgb(0, 173, 181);
-            txtLimite.Location = new Point(136, 282);
-            txtLimite.Name = "txtLimite";
-            txtLimite.Size = new Size(152, 39);
-            txtLimite.TabIndex = 0;
-            txtLimite.TextChanged += textBox1_TextChanged;
+            txtNumero.BackColor = Color.FromArgb(238, 238, 238);
+            txtNumero.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtNumero.ForeColor = Color.FromArgb(0, 173, 181);
+            txtNumero.Location = new Point(231, 224);
+            txtNumero.Name = "txtNumero";
+            txtNumero.Size = new Size(219, 39);
+            txtNumero.TabIndex = 2;
+            // 
+            // lblNumero
+            // 
+            lblNumero.AutoSize = true;
+            lblNumero.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblNumero.ForeColor = Color.FromArgb(0, 173, 181);
+            lblNumero.Location = new Point(9, 224);
+            lblNumero.Name = "lblNumero";
+            lblNumero.Size = new Size(216, 32);
+            lblNumero.TabIndex = 0;
+            lblNumero.Text = "Numero da conta";
             // 
             // TelaContaCorrenteForm
             // 
@@ -213,6 +207,7 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "TelaContaCorrenteForm";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "TelaContaCorrenteForm";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

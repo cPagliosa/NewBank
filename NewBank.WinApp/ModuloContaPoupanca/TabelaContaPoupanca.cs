@@ -24,7 +24,7 @@ namespace NewBank.WinApp.ModuloContaPoupanca
             grid.Rows.Clear();
 
             foreach (ContaPoupanca i in contas)
-                grid.Rows.Add(i.Id, i.Titular, i.Numero, i.Saldo,i.Taxa);
+                grid.Rows.Add(i.Id, i.Titular.Nome, i.Numero, i.Saldo,i.Taxa);
         }
 
         public int ObterRegistroSelecionado()
@@ -38,6 +38,7 @@ namespace NewBank.WinApp.ModuloContaPoupanca
             {
                 new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id" },
                 new DataGridViewTextBoxColumn { DataPropertyName = "Titular", HeaderText = "Titular" },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Numero", HeaderText = "Numero" },
                 new DataGridViewTextBoxColumn { DataPropertyName = "Saldo", HeaderText = "Saldo" },
                 new DataGridViewTextBoxColumn { DataPropertyName = "Taxa", HeaderText = "Taxa" },
             };

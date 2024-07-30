@@ -34,6 +34,7 @@
             // 
             // grid
             // 
+            grid.BackgroundColor = Color.FromArgb(34, 40, 49);
             grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             grid.Dock = DockStyle.Fill;
             grid.Location = new Point(0, 0);

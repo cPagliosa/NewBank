@@ -1,5 +1,4 @@
-﻿using Gerador_de_Testes.ModoloDisciplina;
-using NewBank.Dominio.ModoloContaCorrente;
+﻿using NewBank.Dominio.ModoloContaCorrente;
 using NewBank.Dominio.ModuloContaCorrente;
 using NewBank.Dominio.ModuloHistorioco;
 using NewBank.Dominio.ModuloOperacao;
@@ -85,7 +84,7 @@ namespace NewBank.WinApp.ModuloContaCorrente
 
             CarregarDadosTabela();
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"Uma conta corrente do titular: \"{novaConta.Titular.Nome}\" foi editada com sucesso!");
+            TelaPrincipalForm.Instancia.AtualizarRodape($"Uma conta corrente do titular: \"{contaSelecionada.Titular.Nome}\" foi editada com sucesso!");
         }
 
         public override void Excluir()
@@ -119,7 +118,7 @@ namespace NewBank.WinApp.ModuloContaCorrente
 
             CarregarDadosTabela();
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"Uma conta corrente do titular: \"{novaConta.Titular.Nome}\" foi excluida com sucesso!");
+            TelaPrincipalForm.Instancia.AtualizarRodape($"Uma conta corrente do titular: \"{contaSelecionada.Titular.Nome}\" foi excluida com sucesso!");
         }
 
         public override void PDF()

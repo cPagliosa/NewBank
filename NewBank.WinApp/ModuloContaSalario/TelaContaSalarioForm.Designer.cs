@@ -68,9 +68,10 @@
             btnGravar.Location = new Point(320, 345);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(130, 48);
-            btnGravar.TabIndex = 1;
+            btnGravar.TabIndex = 3;
             btnGravar.Text = "Gravar";
             btnGravar.UseVisualStyleBackColor = true;
+            btnGravar.Click += btnGravar_Click;
             // 
             // btnCancelar
             // 
@@ -80,9 +81,10 @@
             btnCancelar.Location = new Point(467, 345);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(130, 48);
-            btnCancelar.TabIndex = 2;
+            btnCancelar.TabIndex = 4;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // txtEndereco
             // 
@@ -92,7 +94,7 @@
             txtEndereco.Location = new Point(136, 163);
             txtEndereco.Name = "txtEndereco";
             txtEndereco.Size = new Size(461, 39);
-            txtEndereco.TabIndex = 0;
+            txtEndereco.TabIndex = 1;
             // 
             // lblEndereco
             // 
@@ -113,7 +115,7 @@
             txtNumero.Location = new Point(231, 224);
             txtNumero.Name = "txtNumero";
             txtNumero.Size = new Size(219, 39);
-            txtNumero.TabIndex = 0;
+            txtNumero.TabIndex = 2;
             // 
             // lblNumero
             // 
@@ -180,6 +182,7 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "TelaContaSalarioForm";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "TelaContaSalarioForm";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

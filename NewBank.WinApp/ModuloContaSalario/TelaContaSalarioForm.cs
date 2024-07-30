@@ -1,17 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using NewBank.Dominio.ModuloContaSalario;
 
 namespace NewBank.WinApp.ModuloContaSalario
 {
     public partial class TelaContaSalarioForm : Form
     {
+        private List<string> erros;
+        private ContaSalario contaSalario;
+
+        public ContaSalario ContaSalario
+        {
+            set
+            {
+
+            }
+            get
+            {
+                return this.contaSalario;
+            }
+        }
         public TelaContaSalarioForm()
         {
             InitializeComponent();

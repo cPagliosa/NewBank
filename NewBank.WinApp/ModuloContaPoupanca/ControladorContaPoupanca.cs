@@ -35,7 +35,20 @@ namespace NewBank.WinApp.ModuloContaPoupanca
 
         public override void Adicionar()
         {
-            throw new NotImplementedException();
+            TelaContaPoupancaForm telaContaPoupanca = new TelaContaPoupancaForm();
+
+            DialogResult resultado = telaContaPoupanca.ShowDialog();
+
+            if (resultado != DialogResult.OK)
+                return;
+
+            ContaPoupanca novaConta = telaContaPoupanca.ContaPoupanca;
+
+            this.repositorioContaPoupanca.Cadastrar(novaConta);
+
+            CarregarDadosTabela();
+
+            TelaPrincipalForm.Instancia.AtualizarRodape($"Uma conta poupaça do titular: \"{novaConta.Titular.Nome}\" foi criada com sucesso!");
         }
 
         public override void Editar()

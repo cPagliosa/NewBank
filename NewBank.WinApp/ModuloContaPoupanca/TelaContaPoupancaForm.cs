@@ -1,17 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using NewBank.Dominio.ModuloContaPoupanca;
 
 namespace NewBank.WinApp.ModuloContaPoupanca
 {
     public partial class TelaContaPoupancaForm : Form
     {
+        private List<string> erros;
+        private ContaPoupanca contaPoupanca;
+
+        public ContaPoupanca ContaPoupanca
+        {
+            set
+            {
+
+            }
+            get
+            {
+                return this.contaPoupanca;
+            }
+        }
         public TelaContaPoupancaForm()
         {
             InitializeComponent();

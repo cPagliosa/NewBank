@@ -36,7 +36,20 @@ namespace NewBank.WinApp.ModuloContaCorrente
 
         public override void Adicionar()
         {
-            throw new NotImplementedException();
+            TelaContaCorrenteForm telaContaCorrente = new TelaContaCorrenteForm();
+
+            DialogResult resultado = telaContaCorrente.ShowDialog();
+
+            if (resultado != DialogResult.OK)
+                return;
+
+            ContaCorrente novaConta = telaContaCorrente.ContaCorrente;
+
+            this.repositorioContaCorrente.Cadastrar(novaConta);
+
+            CarregarDadosTabela();
+
+            TelaPrincipalForm.Instancia.AtualizarRodape($"Uma conta corrente do titular: \"{novaConta.Titular.Nome}\" foi criada com sucesso!");
         }
 
         public override void Editar()

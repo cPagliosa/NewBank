@@ -1,11 +1,13 @@
 ﻿
 using NewBank.Dominio.ModoloContaCorrente;
 using NewBank.Dominio.ModuloContaCorrente;
+using NewBank.Dominio.ModuloContaPoupanca;
 using NewBank.Dominio.ModuloContaSalario;
 using NewBank.Dominio.ModuloHistorioco;
 using NewBank.Dominio.ModuloOperacao;
 using NewBank.WinApp.Compartilhado;
 using NewBank.WinApp.ModuloContaCorrente;
+using NewBank.WinApp.ModuloContaPoupanca;
 
 namespace NewBank.WinApp.ModuloContaSalario
 {
@@ -37,7 +39,20 @@ namespace NewBank.WinApp.ModuloContaSalario
 
         public override void Adicionar()
         {
-            throw new NotImplementedException();
+            TelaContaSalarioForm telaContaSalario = new TelaContaSalarioForm();
+
+            DialogResult resultado = telaContaSalario.ShowDialog();
+
+            if (resultado != DialogResult.OK)
+                return;
+
+            ContaSalario novaConta = telaContaSalario.ContaSalario;
+
+            this.repositorioContaSalario.Cadastrar(novaConta);
+
+            CarregarDadosTabela();
+
+            TelaPrincipalForm.Instancia.AtualizarRodape($"Uma conta salario do titular: \"{novaConta.Titular.Nome}\" foi criada com sucesso!");
         }
 
         public override void Editar()

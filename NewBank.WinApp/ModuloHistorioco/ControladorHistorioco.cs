@@ -6,18 +6,25 @@ namespace NewBank.WinApp.ModuloHistorioco
 {
     public class ControladorHistorioco : ControladorBase
     {
-        public override string TipoCadastro { get; }
-        public override string ToolTipAdicionar { get; }
-        public override string ToolTipEditar { get; }
-        public override string ToolTipExcluir { get; }
+        private Historioco historioco;
+        private TabelaHistorico tabelaHistorico;
 
-        public ControladorHistorioco(IRepositorioHistorioco repositorioHistoriocos)
+        public override string TipoCadastro { get { return "Historioco"; } }
+        public override string ToolTipAdicionar { get { return ""; } }
+        public override string ToolTipEditar { get { return ""; } }
+        public override string ToolTipExcluir { get { return ""; } }
+
+        public ControladorHistorioco(Historioco historioco)
         {
-            
+            this.historioco = historioco;
         }
         public override UserControl ObterListagem()
         {
-            throw new NotImplementedException();
+            if (tabelaHistorico == null)
+                tabelaHistorico = new TabelaHistorico();
+            CarregarDadosTabela();
+
+            return tabelaHistorico;
         }
 
         public override void Adicionar()
@@ -43,6 +50,13 @@ namespace NewBank.WinApp.ModuloHistorioco
         public override void Operacao()
         {
             throw new NotImplementedException();
+        }
+
+        private void CarregarDadosTabela()
+        {
+            List<Operacao> disciplina = this.historioco.Operacoes;
+
+            tabelaHistorico.AtualizarRegistros(disciplina);
         }
     }
 }

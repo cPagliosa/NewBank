@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using NewBank.Dominio.ModuloOperacao;
+using NewBank.WinApp.Compartilhado;
 
 namespace NewBank.WinApp.ModuloHistorioco
 {
@@ -15,6 +8,35 @@ namespace NewBank.WinApp.ModuloHistorioco
         public TabelaHistorico()
         {
             InitializeComponent();
+
+            this.grid.Columns.AddRange(ObterColunas());
+
+            grid.ConfigurarGridSomenteLeitura();
+            grid.ConfigurarGridZebrado();
+        }
+
+        public void AtualizarRegistros(List<Operacao> Operacoes)
+        {
+            grid.Rows.Clear();
+
+            foreach (Operacao i in Operacoes)
+                grid.Rows.Add(i.Id, i.Data,i.Descricao,i.Valor);
+        }
+
+        public int ObterRegistroSelecionado()
+        {
+            return grid.SelecionarId();
+        }
+
+        private DataGridViewColumn[] ObterColunas()
+        {
+            return new DataGridViewColumn[]
+            {
+                new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id" },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Data", HeaderText = "Data" },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Descricao", HeaderText = "Descrição" },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Valor", HeaderText = "Valor" },
+            };
         }
     }
 }

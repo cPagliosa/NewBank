@@ -1,6 +1,7 @@
-﻿namespace NewBank.WinApp.ModuloContaCorrente
+﻿
+namespace Gerador_de_Testes.ModoloDisciplina
 {
-    partial class TelaContaCorrenteForm
+    partial class TelaDisciplinaForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,39 +29,55 @@
         /// </summary>
         private void InitializeComponent()
         {
+            panel1 = new Panel();
             btnGravar = new Button();
             btnCancelar = new Button();
             txtNome = new TextBox();
             label2 = new Label();
             txtId = new TextBox();
             label1 = new Label();
-            panel1 = new Panel();
             panel1.SuspendLayout();
             SuspendLayout();
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.FromArgb(57, 62, 70);
+            panel1.Controls.Add(btnGravar);
+            panel1.Controls.Add(btnCancelar);
+            panel1.Controls.Add(txtNome);
+            panel1.Controls.Add(label2);
+            panel1.Controls.Add(txtId);
+            panel1.Controls.Add(label1);
+            panel1.Location = new Point(12, 12);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(776, 297);
+            panel1.TabIndex = 0;
             // 
             // btnGravar
             // 
             btnGravar.FlatAppearance.BorderSize = 0;
             btnGravar.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnGravar.ForeColor = Color.FromArgb(0, 173, 181);
-            btnGravar.Location = new Point(483, 366);
+            btnGravar.Location = new Point(484, 236);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(130, 48);
             btnGravar.TabIndex = 1;
             btnGravar.Text = "Gravar";
             btnGravar.UseVisualStyleBackColor = true;
+            btnGravar.Click += btnGravar_Click;
             // 
             // btnCancelar
             // 
             btnCancelar.FlatAppearance.BorderSize = 0;
             btnCancelar.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCancelar.ForeColor = Color.FromArgb(0, 173, 181);
-            btnCancelar.Location = new Point(630, 366);
+            btnCancelar.Location = new Point(631, 236);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(130, 48);
             btnCancelar.TabIndex = 2;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // txtNome
             // 
@@ -106,44 +123,32 @@
             label1.TabIndex = 0;
             label1.Text = "Id";
             // 
-            // panel1
-            // 
-            panel1.BackColor = Color.FromArgb(57, 62, 70);
-            panel1.Controls.Add(btnGravar);
-            panel1.Controls.Add(btnCancelar);
-            panel1.Controls.Add(txtNome);
-            panel1.Controls.Add(label2);
-            panel1.Controls.Add(txtId);
-            panel1.Controls.Add(label1);
-            panel1.Location = new Point(12, 12);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(776, 426);
-            panel1.TabIndex = 1;
-            // 
-            // TelaContaCorrenteForm
+            // TelaDisciplinaForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(34, 40, 49);
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 319);
             Controls.Add(panel1);
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "TelaContaCorrenteForm";
-            Text = "TelaContaCorrenteForm";
+            Name = "TelaDisciplinaForm";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "TelaDisciplinaForm";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
         }
 
+
         #endregion
 
-        private Button btnGravar;
-        private Button btnCancelar;
+        private Panel panel1;
+        private Label label1;
+        private TextBox txtId;
         private TextBox txtNome;
         private Label label2;
-        private TextBox txtId;
-        private Label label1;
-        private Panel panel1;
+        private Button btnCancelar;
+        private Button btnGravar;
     }
 }

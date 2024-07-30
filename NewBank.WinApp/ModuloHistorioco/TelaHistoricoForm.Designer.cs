@@ -28,12 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "TelaHistoricoForm";
+            panel1 = new Panel();
+            SuspendLayout();
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.FromArgb(57, 62, 70);
+            panel1.Location = new Point(12, 12);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(776, 426);
+            panel1.TabIndex = 0;
+            // 
+            // TelaHistoricoForm
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(34, 40, 49);
+            ClientSize = new Size(800, 450);
+            Controls.Add(panel1);
+            Name = "TelaHistoricoForm";
+            Text = "TelaHistoricoForm";
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Panel panel1;
     }
 }

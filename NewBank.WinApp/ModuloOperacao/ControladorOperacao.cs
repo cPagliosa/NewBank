@@ -1,4 +1,5 @@
 ﻿
+using NewBank.Dominio.ModuloOperacao;
 using NewBank.WinApp.Compartilhado;
 
 namespace NewBank.WinApp.ModuloOperacao
@@ -10,6 +11,11 @@ namespace NewBank.WinApp.ModuloOperacao
         public override string ToolTipAdicionar { get; }
         public override string ToolTipEditar { get; }
         public override string ToolTipExcluir { get; }
+
+        public ControladorOperacao(IRepositorioOperacao repositorioOperacao)
+        {
+            
+        }
         public override UserControl ObterListagem()
         {
             throw new NotImplementedException();
@@ -31,6 +37,11 @@ namespace NewBank.WinApp.ModuloOperacao
         }
 
         public override void PDF()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Operacao()
         {
             throw new NotImplementedException();
         }

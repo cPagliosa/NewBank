@@ -1,4 +1,7 @@
 ﻿
+using NewBank.Dominio.ModuloContaCorrente;
+using NewBank.Dominio.ModuloHistorioco;
+using NewBank.Dominio.ModuloOperacao;
 using NewBank.WinApp.Compartilhado;
 
 namespace NewBank.WinApp.ModuloContaCorrente
@@ -9,6 +12,11 @@ namespace NewBank.WinApp.ModuloContaCorrente
         public override string ToolTipAdicionar { get; }
         public override string ToolTipEditar { get; }
         public override string ToolTipExcluir { get; }
+
+        public ControladorContaCorrente(IRepositorioContaCorrente repositorioContaCorrente,IRepositorioHistorioco repositorioHistorioco,IRepositorioOperacao repositorioOperacao)
+        {
+            
+        }
         public override UserControl ObterListagem()
         {
             throw new NotImplementedException();
@@ -30,6 +38,11 @@ namespace NewBank.WinApp.ModuloContaCorrente
         }
 
         public override void PDF()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Operacao()
         {
             throw new NotImplementedException();
         }

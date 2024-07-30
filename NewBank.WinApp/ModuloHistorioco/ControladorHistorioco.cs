@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NewBank.Dominio.ModuloHistorioco;
+using NewBank.Dominio.ModuloOperacao;
 using NewBank.WinApp.Compartilhado;
 
 namespace NewBank.WinApp.ModuloHistorioco
@@ -13,6 +10,11 @@ namespace NewBank.WinApp.ModuloHistorioco
         public override string ToolTipAdicionar { get; }
         public override string ToolTipEditar { get; }
         public override string ToolTipExcluir { get; }
+
+        public ControladorHistorioco(IRepositorioHistorioco repositorioHistoriocos)
+        {
+            
+        }
         public override UserControl ObterListagem()
         {
             throw new NotImplementedException();
@@ -34,6 +36,11 @@ namespace NewBank.WinApp.ModuloHistorioco
         }
 
         public override void PDF()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Operacao()
         {
             throw new NotImplementedException();
         }

@@ -14,5 +14,6 @@
         public abstract void Editar();
         public abstract void Excluir();
         public abstract void PDF();
+        public abstract void Operacao();
     }
 }

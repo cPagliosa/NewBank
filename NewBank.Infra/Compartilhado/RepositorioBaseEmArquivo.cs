@@ -34,7 +34,7 @@ namespace NewBank.Infra.Compartilhado
             if (registro == null)
                 return false;
 
-            registro.AtualizarRegistro(novaEntidade);
+            registro.AtualizarInformacoes(novaEntidade);
 
             contexto.Gravar();
 

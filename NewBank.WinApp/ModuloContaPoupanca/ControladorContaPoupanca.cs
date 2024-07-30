@@ -1,5 +1,6 @@
 ﻿
 using NewBank.Dominio.ModoloContaCorrente;
+using NewBank.Dominio.ModuloContaCorrente;
 using NewBank.Dominio.ModuloContaPoupanca;
 using NewBank.Dominio.ModuloHistorioco;
 using NewBank.Dominio.ModuloOperacao;
@@ -53,7 +54,37 @@ namespace NewBank.WinApp.ModuloContaPoupanca
 
         public override void Editar()
         {
-            throw new NotImplementedException();
+            TelaContaPoupancaForm telaContaPoupanca = new TelaContaPoupancaForm();
+
+            int idSelecionado = tabelaContaPoupanca.ObterRegistroSelecionado();
+
+            ContaPoupanca contaSelecionada = repositorioContaPoupanca.SelecionarPorId(idSelecionado);
+
+            if (contaSelecionada == null)
+            {
+                MessageBox.Show(
+                    "Não é possível realizar esta ação sem uma conta selecionada.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            telaContaPoupanca.ContaPoupanca = contaSelecionada;
+
+            DialogResult resultado = telaContaPoupanca.ShowDialog();
+
+            if (resultado != DialogResult.OK)
+                return;
+
+            ContaPoupanca contaEditada = telaContaPoupanca.ContaPoupanca;
+
+            repositorioContaPoupanca.Editar(contaSelecionada.Id, contaEditada);
+
+            CarregarDadosTabela();
+
+            TelaPrincipalForm.Instancia.AtualizarRodape($"Uma conta poupaça do titular: \"{novaConta.Titular.Nome}\" foi editada com sucesso!");
         }
 
         public override void Excluir()

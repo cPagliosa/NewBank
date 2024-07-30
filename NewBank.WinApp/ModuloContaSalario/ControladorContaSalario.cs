@@ -57,7 +57,37 @@ namespace NewBank.WinApp.ModuloContaSalario
 
         public override void Editar()
         {
-            throw new NotImplementedException();
+            TelaContaSalarioForm telaContaSalario = new TelaContaSalarioForm();
+
+            int idSelecionado = tabelaContaSalario.ObterRegistroSelecionado();
+
+            ContaSalario contaSelecionada = repositorioContaSalario.SelecionarPorId(idSelecionado);
+
+            if (contaSelecionada == null)
+            {
+                MessageBox.Show(
+                    "Não é possível realizar esta ação sem uma conta selecionada.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            telaContaSalario.ContaSalario = contaSelecionada;
+
+            DialogResult resultado = telaContaSalario.ShowDialog();
+
+            if (resultado != DialogResult.OK)
+                return;
+
+            ContaSalario contaEditada = telaContaSalario.ContaSalario;
+
+            repositorioContaSalario.Editar(contaSelecionada.Id, contaEditada);
+
+            CarregarDadosTabela();
+
+            TelaPrincipalForm.Instancia.AtualizarRodape($"Uma conta salario do titular: \"{novaConta.Titular.Nome}\" foi editada com sucesso!");
         }
 
         public override void Excluir()

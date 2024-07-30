@@ -1,4 +1,5 @@
-﻿using NewBank.Dominio.ModoloContaCorrente;
+﻿using Gerador_de_Testes.ModoloDisciplina;
+using NewBank.Dominio.ModoloContaCorrente;
 using NewBank.Dominio.ModuloContaCorrente;
 using NewBank.Dominio.ModuloHistorioco;
 using NewBank.Dominio.ModuloOperacao;
@@ -54,7 +55,37 @@ namespace NewBank.WinApp.ModuloContaCorrente
 
         public override void Editar()
         {
-            throw new NotImplementedException();
+            TelaContaCorrenteForm telaContaCorrente = new TelaContaCorrenteForm();
+
+            int idSelecionado = tabelaContaCorrente.ObterRegistroSelecionado();
+
+            ContaCorrente contaSelecionada = repositorioContaCorrente.SelecionarPorId(idSelecionado);
+
+            if (contaSelecionada == null)
+            {
+                MessageBox.Show(
+                    "Não é possível realizar esta ação sem uma conta selecionada.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            telaContaCorrente.ContaCorrente = contaSelecionada;
+
+            DialogResult resultado = telaContaCorrente.ShowDialog();
+
+            if (resultado != DialogResult.OK)
+                return;
+
+            ContaCorrente contaEditada = telaContaCorrente.ContaCorrente;
+
+            repositorioContaCorrente.Editar(contaSelecionada.Id, contaEditada);
+
+            CarregarDadosTabela();
+
+            TelaPrincipalForm.Instancia.AtualizarRodape($"Uma conta corrente do titular: \"{novaConta.Titular.Nome}\" foi editada com sucesso!");
         }
 
         public override void Excluir()

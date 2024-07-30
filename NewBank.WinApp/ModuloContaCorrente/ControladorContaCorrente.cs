@@ -90,7 +90,36 @@ namespace NewBank.WinApp.ModuloContaCorrente
 
         public override void Excluir()
         {
-            throw new NotImplementedException();
+            int idSelecionado = tabelaContaCorrente.ObterRegistroSelecionado();
+
+            ContaCorrente contaSelecionada = repositorioContaCorrente.SelecionarPorId(idSelecionado);
+
+            if (contaSelecionada == null)
+            {
+                MessageBox.Show(
+                    "Não é possível realizar esta ação sem uma conta selecionada.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            DialogResult resposta = MessageBox.Show(
+                $"Você deseja realmente excluir a conta do titular:  \"{contaSelecionada.Titular.Nome}\"?",
+                "Confirmar Exclusão",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (resposta != DialogResult.Yes)
+                return;
+
+            repositorioContaCorrente.Excluir(contaSelecionada.Id);
+
+            CarregarDadosTabela();
+
+            TelaPrincipalForm.Instancia.AtualizarRodape($"Uma conta corrente do titular: \"{novaConta.Titular.Nome}\" foi excluida com sucesso!");
         }
 
         public override void PDF()

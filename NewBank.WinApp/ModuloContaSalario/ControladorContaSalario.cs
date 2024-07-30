@@ -1,13 +1,8 @@
-﻿
-using NewBank.Dominio.ModoloContaCorrente;
-using NewBank.Dominio.ModuloContaCorrente;
-using NewBank.Dominio.ModuloContaPoupanca;
-using NewBank.Dominio.ModuloContaSalario;
+﻿using NewBank.Dominio.ModuloContaSalario;
 using NewBank.Dominio.ModuloHistorioco;
 using NewBank.Dominio.ModuloOperacao;
 using NewBank.WinApp.Compartilhado;
-using NewBank.WinApp.ModuloContaCorrente;
-using NewBank.WinApp.ModuloContaPoupanca;
+
 
 namespace NewBank.WinApp.ModuloContaSalario
 {
@@ -92,7 +87,36 @@ namespace NewBank.WinApp.ModuloContaSalario
 
         public override void Excluir()
         {
-            throw new NotImplementedException();
+            int idSelecionado = tabelaContaSalario.ObterRegistroSelecionado();
+
+            ContaSalario contaSelecionada = repositorioContaSalario.SelecionarPorId(idSelecionado);
+
+            if (contaSelecionada == null)
+            {
+                MessageBox.Show(
+                    "Não é possível realizar esta ação sem uma conta selecionada.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            DialogResult resposta = MessageBox.Show(
+                $"Você deseja realmente excluir a conta do titular:  \"{contaSelecionada.Titular.Nome}\"?",
+                "Confirmar Exclusão",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (resposta != DialogResult.Yes)
+                return;
+
+            repositorioContaSalario.Excluir(contaSelecionada.Id);
+
+            CarregarDadosTabela();
+
+            TelaPrincipalForm.Instancia.AtualizarRodape($"Uma conta corrente do titular: \"{novaConta.Titular.Nome}\" foi excluida com sucesso!");
         }
 
         public override void PDF()

@@ -33,13 +33,18 @@
             stripMenuCorrente = new ToolStripMenuItem();
             stripMenuSalario = new ToolStripMenuItem();
             stripMenuPoupanca = new ToolStripMenuItem();
+            opçoesToolStripMenuItem = new ToolStripMenuItem();
+            linguaToolStripMenuItem = new ToolStripMenuItem();
+            ptbrToolStripMenuItem = new ToolStripMenuItem();
+            enusToolStripMenuItem = new ToolStripMenuItem();
+            esToolStripMenuItem = new ToolStripMenuItem();
             toolStrip1 = new ToolStrip();
             btnAdd = new ToolStripButton();
             btnEditar = new ToolStripButton();
             btnExcluir = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
             btnOperacao = new ToolStripButton();
-            btnPDF = new ToolStripButton();
+            btnHistorico = new ToolStripButton();
             Separator2 = new ToolStripSeparator();
             lblTipoCadastro = new ToolStripLabel();
             statusStrip1 = new StatusStrip();
@@ -54,7 +59,7 @@
             // 
             menuStrip1.BackColor = Color.FromArgb(57, 62, 70);
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { telasToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { telasToolStripMenuItem, opçoesToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(905, 36);
@@ -97,12 +102,54 @@
             stripMenuPoupanca.Text = "Poupança";
             stripMenuPoupanca.Click += stripMenuQuestoes_Click;
             // 
+            // opçoesToolStripMenuItem
+            // 
+            opçoesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { linguaToolStripMenuItem });
+            opçoesToolStripMenuItem.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            opçoesToolStripMenuItem.ForeColor = Color.FromArgb(0, 173, 181);
+            opçoesToolStripMenuItem.Name = "opçoesToolStripMenuItem";
+            opçoesToolStripMenuItem.Size = new Size(94, 32);
+            opçoesToolStripMenuItem.Text = "Opçoes";
+            // 
+            // linguaToolStripMenuItem
+            // 
+            linguaToolStripMenuItem.BackColor = Color.FromArgb(57, 62, 70);
+            linguaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { ptbrToolStripMenuItem, enusToolStripMenuItem, esToolStripMenuItem });
+            linguaToolStripMenuItem.ForeColor = Color.FromArgb(0, 173, 181);
+            linguaToolStripMenuItem.Name = "linguaToolStripMenuItem";
+            linguaToolStripMenuItem.Size = new Size(224, 32);
+            linguaToolStripMenuItem.Text = "Lingua";
+            // 
+            // ptbrToolStripMenuItem
+            // 
+            ptbrToolStripMenuItem.BackColor = Color.FromArgb(57, 62, 70);
+            ptbrToolStripMenuItem.ForeColor = Color.FromArgb(0, 173, 181);
+            ptbrToolStripMenuItem.Name = "ptbrToolStripMenuItem";
+            ptbrToolStripMenuItem.Size = new Size(224, 32);
+            ptbrToolStripMenuItem.Text = "pt-br";
+            // 
+            // enusToolStripMenuItem
+            // 
+            enusToolStripMenuItem.BackColor = Color.FromArgb(57, 62, 70);
+            enusToolStripMenuItem.ForeColor = Color.FromArgb(0, 173, 181);
+            enusToolStripMenuItem.Name = "enusToolStripMenuItem";
+            enusToolStripMenuItem.Size = new Size(224, 32);
+            enusToolStripMenuItem.Text = "en-us";
+            // 
+            // esToolStripMenuItem
+            // 
+            esToolStripMenuItem.BackColor = Color.FromArgb(57, 62, 70);
+            esToolStripMenuItem.ForeColor = Color.FromArgb(0, 173, 181);
+            esToolStripMenuItem.Name = "esToolStripMenuItem";
+            esToolStripMenuItem.Size = new Size(224, 32);
+            esToolStripMenuItem.Text = "es-";
+            // 
             // toolStrip1
             // 
             toolStrip1.BackColor = Color.FromArgb(34, 40, 49);
             toolStrip1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             toolStrip1.ImageScalingSize = new Size(40, 40);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAdd, btnEditar, btnExcluir, toolStripSeparator1, btnOperacao, btnPDF, Separator2, lblTipoCadastro });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAdd, btnEditar, btnExcluir, toolStripSeparator1, btnOperacao, btnHistorico, Separator2, lblTipoCadastro });
             toolStrip1.Location = new Point(0, 36);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(905, 54);
@@ -114,7 +161,7 @@
             btnAdd.DisplayStyle = ToolStripItemDisplayStyle.Image;
             btnAdd.Enabled = false;
             btnAdd.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnAdd.Image = NewBank.WinApp.Properties.Resources.adicionar_ficheiro__2_;
+            btnAdd.Image = Properties.Resources.adicionar_ficheiro__2_;
             btnAdd.Margin = new Padding(5);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(44, 44);
@@ -125,7 +172,7 @@
             // 
             btnEditar.DisplayStyle = ToolStripItemDisplayStyle.Image;
             btnEditar.Enabled = false;
-            btnEditar.Image = NewBank.WinApp.Properties.Resources.editar;
+            btnEditar.Image = Properties.Resources.editar;
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(44, 51);
             btnEditar.Text = "toolStripButton2";
@@ -135,7 +182,7 @@
             // 
             btnExcluir.DisplayStyle = ToolStripItemDisplayStyle.Image;
             btnExcluir.Enabled = false;
-            btnExcluir.Image = NewBank.WinApp.Properties.Resources.arquivo;
+            btnExcluir.Image = Properties.Resources.arquivo;
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(44, 51);
             btnExcluir.Text = "toolStripButton3";
@@ -150,20 +197,20 @@
             // btnOperacao
             // 
             btnOperacao.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnOperacao.Image = NewBank.WinApp.Properties.Resources.money_management;
+            btnOperacao.Image = Properties.Resources.money_management;
             btnOperacao.Name = "btnOperacao";
             btnOperacao.Size = new Size(44, 51);
             btnOperacao.Text = "Dublicar teste";
             btnOperacao.Click += btnDuplicar_Click;
             // 
-            // btnPDF
+            // btnHistorico
             // 
-            btnPDF.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnPDF.Image = NewBank.WinApp.Properties.Resources.btnPDF;
-            btnPDF.Name = "btnPDF";
-            btnPDF.Size = new Size(44, 51);
-            btnPDF.Text = "Baixar PDF do teste";
-            btnPDF.Click += btnPDF_Click;
+            btnHistorico.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnHistorico.Image = Properties.Resources.simbolo_de_ferramentas_de_organizacao_e_administracao_de_horario_de_calendario_e_relogio;
+            btnHistorico.Name = "btnHistorico";
+            btnHistorico.Size = new Size(44, 51);
+            btnHistorico.Text = "Historico";
+            btnHistorico.Click += btnPDF_Click;
             // 
             // Separator2
             // 
@@ -208,7 +255,6 @@
             // 
             // TelaPrincipalForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
             ClientSize = new Size(905, 561);
             Controls.Add(pnlRegistros);
             Controls.Add(statusStrip1);
@@ -247,7 +293,12 @@
         private ToolStripLabel lblTipoCadastro;
         private Panel pnlRegistros;
         private ToolStripButton btnOperacao;
-        private ToolStripButton btnPDF;
+        private ToolStripButton btnHistorico;
         private ToolStripSeparator Separator2;
+        private ToolStripMenuItem opçoesToolStripMenuItem;
+        private ToolStripMenuItem linguaToolStripMenuItem;
+        private ToolStripMenuItem ptbrToolStripMenuItem;
+        private ToolStripMenuItem enusToolStripMenuItem;
+        private ToolStripMenuItem esToolStripMenuItem;
     }
 }

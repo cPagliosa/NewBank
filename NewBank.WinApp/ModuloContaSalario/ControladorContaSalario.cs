@@ -119,7 +119,7 @@ namespace NewBank.WinApp.ModuloContaSalario
             TelaPrincipalForm.Instancia.AtualizarRodape($"Uma conta corrente do titular: \"{contaSelecionada.Titular.Nome}\" foi excluida com sucesso!");
         }
 
-        public override void PDF()
+        public override void Historioco()
         {
             throw new NotImplementedException();
         }

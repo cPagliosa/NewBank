@@ -109,5 +109,16 @@ namespace NewBank.WinApp.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap simbolo_de_ferramentas_de_organizacao_e_administracao_de_horario_de_calendario_e_relogio {
+            get {
+                object obj = ResourceManager.GetObject("simbolo-de-ferramentas-de-organizacao-e-administracao-de-horario-de-calendario-e-" +
+                        "relogio", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

@@ -11,6 +11,12 @@ namespace NewBank.Dominio.ModuloHistorioco
 
         public Historioco() { }
 
+        public Historioco(Titular titular, List<Operacao> operacoes)
+        {
+            this.Titular = titular;
+            this.Operacoes = operacoes;
+        }
+
         public override void AtualizarInformacoes(EntidadeBase registroAtualizado)
         {
             Historioco novo = (Historioco)registroAtualizado;

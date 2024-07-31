@@ -13,7 +13,7 @@
         public abstract void Adicionar();
         public abstract void Editar();
         public abstract void Excluir();
-        public abstract void PDF();
+        public abstract void Historioco();
         public abstract void Operacao();
     }
 }

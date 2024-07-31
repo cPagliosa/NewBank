@@ -26,7 +26,7 @@ namespace NewBank.Dominio.ModoloContaCorrente
                     return true;
                 }
             }
-            else if (this.Saldo - valor >= this.Saldo + this.Limite)
+            else if (valor <= this.Saldo + this.Limite)
             {
                 this.Saldo -= valor;
                 return true;

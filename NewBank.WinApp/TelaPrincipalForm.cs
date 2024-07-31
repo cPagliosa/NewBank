@@ -36,7 +36,9 @@ namespace NewBank.WinApp
             lblTipoCadastro.Text = string.Empty;
             Instancia = this;
 
-            DesiblitarMenus();
+            this.btnOperacao.Visible = false;
+            this.btnHistorico.Visible = false;
+            this.Separator2.Visible = false;
 
             contexto = new ContextoDados(carregarDados: true);
 
@@ -136,14 +138,14 @@ namespace NewBank.WinApp
 
         private void btnPDF_Click(object sender, EventArgs e)
         {
-            this.controlador.PDF();
+            this.controlador.Historioco();
         }
 
         private void DesiblitarMenus()
         {
-            this.btnOperacao.Visible = false;
-            this.btnPDF.Visible = false;
-            this.Separator2.Visible = false;
+            this.btnOperacao.Visible = true;
+            this.btnHistorico.Visible = true;
+            this.Separator2.Visible = true;
         }
     }
 }

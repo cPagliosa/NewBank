@@ -3,6 +3,8 @@ using NewBank.Dominio.ModuloContaCorrente;
 using NewBank.Dominio.ModuloHistorioco;
 using NewBank.Dominio.ModuloOperacao;
 using NewBank.WinApp.Compartilhado;
+using NewBank.WinApp.ModuloHistorioco;
+using NewBank.WinApp.ModuloOperacao;
 
 namespace NewBank.WinApp.ModuloContaCorrente
 {
@@ -121,21 +123,97 @@ namespace NewBank.WinApp.ModuloContaCorrente
             TelaPrincipalForm.Instancia.AtualizarRodape($"Uma conta corrente do titular: \"{contaSelecionada.Titular.Nome}\" foi excluida com sucesso!");
         }
 
-        public override void PDF()
+        public override void Historioco()
         {
-            throw new NotImplementedException();
+            TelaHistoricoForm telaHistorico = new TelaHistoricoForm();
+
+            int idSelecionado = tabelaContaCorrente.ObterRegistroSelecionado();
+
+            ContaCorrente contaSelecionada = repositorioContaCorrente.SelecionarPorId(idSelecionado);
+
+            List<Historioco> his = repositorioHistorioco.SelecionarTodos();
+
+            foreach (Historioco h in his)
+            {
+                if (contaSelecionada.Titular.Equals(h.Titular))
+                {
+                    telaHistorico.Operacoes = h.Operacoes;
+                    telaHistorico.AtualizarRegistros(h.Operacoes);
+                    break;
+                }
+            }
+            
+            DialogResult resultado = telaHistorico.ShowDialog();
+
+            if (resultado != DialogResult.OK)
+                return;
+
+            CarregarDadosTabela();
+
         }
 
         public override void Operacao()
         {
-            throw new NotImplementedException();
+            int idSelecionado = tabelaContaCorrente.ObterRegistroSelecionado();
+
+            ContaCorrente contaSelecionada = repositorioContaCorrente.SelecionarPorId(idSelecionado);
+
+            TelaOperacaoForm telaOperacao = new TelaOperacaoForm(contaSelecionada,null,null,1);
+
+            DialogResult resultado = telaOperacao.ShowDialog();
+
+            if (resultado != DialogResult.OK)
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Não foi possivel realiza a operação");
+                return;
+            }
+
+            Dominio.ModuloOperacao.Operacao operacaoFeita = telaOperacao.Operacao;
+
+            ContaCorrente contaEditada = telaOperacao.Corrente;
+
+            this.GerarHistorioco(operacaoFeita,contaEditada);
+
+            repositorioContaCorrente.Editar(contaSelecionada.Id, contaEditada);
+
+            CarregarDadosTabela();
+
+            TelaPrincipalForm.Instancia.AtualizarRodape($"A operação foi realizado com sucesso");
+
         }
 
         private void CarregarDadosTabela()
         {
+
             List<ContaCorrente> disciplina = this.repositorioContaCorrente.SelecionarTodos();
 
             tabelaContaCorrente.AtualizarRegistros(disciplina);
+        }
+
+        private void GerarHistorioco(Operacao opera,ContaCorrente conta)
+        {
+            List<Historioco> historiocos = repositorioHistorioco.SelecionarTodos();
+
+            bool achado = false;
+            foreach (Historioco h in historiocos)
+            {
+                if (conta.Titular.Nome.Equals(h.Titular.Nome))
+                {
+                    h.Operacoes.Add(opera);
+                    repositorioHistorioco.Editar(h.Id, h);
+                    achado = true;
+                    break;
+                }
+            }
+
+            if (!achado)
+            {
+                List<Dominio.ModuloOperacao.Operacao> operacaos = new List<Operacao>();
+                operacaos.Add(opera);
+                Historioco novo = new Historioco(conta.Titular,operacaos);
+                repositorioHistorioco.Cadastrar(novo);
+            }
+
         }
     }
 }

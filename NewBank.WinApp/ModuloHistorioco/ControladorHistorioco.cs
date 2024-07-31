@@ -42,7 +42,7 @@ namespace NewBank.WinApp.ModuloHistorioco
             throw new NotImplementedException();
         }
 
-        public override void PDF()
+        public override void Historioco()
         {
             throw new NotImplementedException();
         }

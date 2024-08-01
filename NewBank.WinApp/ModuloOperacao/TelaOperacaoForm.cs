@@ -2,6 +2,7 @@
 using NewBank.Dominio.ModuloContaPoupanca;
 using NewBank.Dominio.ModuloContaSalario;
 using NewBank.Dominio.ModuloOperacao;
+using NewBank.Dominio.Resources;
 
 namespace NewBank.WinApp.ModuloOperacao
 {
@@ -37,7 +38,7 @@ namespace NewBank.WinApp.ModuloOperacao
             }
         }
 
-        ContaPoupanca Poupanca
+        public ContaPoupanca Poupanca
         {
             get
             {
@@ -48,6 +49,7 @@ namespace NewBank.WinApp.ModuloOperacao
         public TelaOperacaoForm(ContaCorrente corrente, ContaSalario salario, ContaPoupanca poupanca, int tipo)
         {
             InitializeComponent();
+            LocalizeForm();
 
             this.tipo = tipo;
             this.corrente = corrente;
@@ -56,6 +58,17 @@ namespace NewBank.WinApp.ModuloOperacao
 
             if (this.tipo == 2)
                 this.btnConta.Visible = false;
+        }
+
+        private void LocalizeForm()
+        {
+            // Defina textos localizados para os controles do formulário
+            this.Text = Lingua.Operacao;
+            this.lblTitulo.Text = Lingua.Operacao;
+            this.btnConta.Text = Lingua.PagarOnline;
+            this.btnSacar.Text = Lingua.Sacar;
+            this.bntDepositar.Text = Lingua.Depositar;
+            this.lblValor.Text = Lingua.Valor;
         }
 
         private void btnSacar_Click(object sender, EventArgs e)

@@ -1,4 +1,5 @@
 ﻿using NewBank.Dominio.ModuloOperacao;
+using NewBank.Dominio.Resources;
 using NewBank.WinApp.Compartilhado;
 
 namespace NewBank.WinApp.ModuloHistorioco
@@ -33,9 +34,9 @@ namespace NewBank.WinApp.ModuloHistorioco
             return new DataGridViewColumn[]
             {
                 new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "Data", HeaderText = "Data" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "Descricao", HeaderText = "Descrição" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "Valor", HeaderText = "Valor" },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Data", HeaderText = Lingua.Data },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Descricao", HeaderText = Lingua.Descricao },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Valor", HeaderText = Lingua.Valor },
             };
         }
     }

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using NewBank.Dominio.ModuloContaPoupanca;
+using NewBank.Dominio.Resources;
 
 namespace NewBank.WinApp.ModuloContaPoupanca
 {
@@ -37,10 +38,10 @@ namespace NewBank.WinApp.ModuloContaPoupanca
             return new DataGridViewColumn[]
             {
                 new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "Titular", HeaderText = "Titular" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "Numero", HeaderText = "Numero" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "Saldo", HeaderText = "Saldo" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "Taxa", HeaderText = "Taxa" },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Titular", HeaderText = Lingua.Titular },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Numero", HeaderText = Lingua.Numero },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Saldo", HeaderText = Lingua.Saldo },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Taxa", HeaderText = Lingua.Taxa },
             };
         }
     }

@@ -1,5 +1,6 @@
 ﻿using NewBank.Dominio.ModoloContaCorrente;
 using NewBank.Dominio.ModuloConta;
+using NewBank.Dominio.Resources;
 using System;
 
 namespace NewBank.WinApp.ModuloContaCorrente
@@ -28,6 +29,19 @@ namespace NewBank.WinApp.ModuloContaCorrente
         public TelaContaCorrenteForm()
         {
             InitializeComponent();
+            LocalizeForm();
+        }
+
+        private void LocalizeForm()
+        {
+            // Defina textos localizados para os controles do formulário
+            this.Text = Lingua.ContaCorrente;
+            this.lblNome.Text = Lingua.Nome;
+            this.lblEndereco.Text = Lingua.Endereco;
+            this.lblLimite.Text = Lingua.Limite;
+            this.lblNumero.Text = Lingua.Numero;
+            this.btnCancelar.Text = Lingua.Cancelar;
+            this.btnGravar.Text = Lingua.Gravar;
         }
 
         private void btnGravar_Click(object sender, EventArgs e)

@@ -1,5 +1,6 @@
 ﻿using NewBank.WinApp.Compartilhado;
 using NewBank.Dominio.ModuloContaSalario;
+using NewBank.Dominio.Resources;
 
 namespace NewBank.WinApp.ModuloContaSalario
 {
@@ -33,9 +34,9 @@ namespace NewBank.WinApp.ModuloContaSalario
             return new DataGridViewColumn[]
             {
                 new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "Titular", HeaderText = "Titular" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "Numero", HeaderText = "Numero" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "Saldo", HeaderText = "Saldo" },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Titular", HeaderText = Lingua.Titular },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Numero", HeaderText = Lingua.Numero },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Saldo", HeaderText = Lingua.Saldo },
             };
         }
     }

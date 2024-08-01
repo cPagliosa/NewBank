@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35027.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewBank.WinApp", "NewBank.WinApp\NewBank.WinApp.csproj", "{2CAC4A0C-5D46-4465-80B9-DC3975BAA39F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewBank.WinApp", "NewBank.WinApp\NewBank.WinApp.csproj", "{2CAC4A0C-5D46-4465-80B9-DC3975BAA39F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.Apresentacao", "1.Apresentacao", "{23F87CFB-98F1-42B2-B923-9A26AA42133F}"
 EndProject
@@ -13,9 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.Infraestrutura", "3.Infra
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.1Form", "1.1Form", "{C0AB2746-EF41-4F2B-92BF-A0E23B5839A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewBank.Dominio", "NewBank.Library\NewBank.Dominio.csproj", "{DBCE6066-764C-45E3-93F7-C2F294AB7E2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewBank.Dominio", "NewBank.Library\NewBank.Dominio.csproj", "{DBCE6066-764C-45E3-93F7-C2F294AB7E2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewBank.Infra", "NewBank.Infra\NewBank.Infra.csproj", "{1DD59966-CA44-4466-B458-7B05473EBC8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewBank.Infra", "NewBank.Infra\NewBank.Infra.csproj", "{1DD59966-CA44-4466-B458-7B05473EBC8D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.1Em Arquivo", "3.1Em Arquivo", "{2B5701CE-CC0E-49E3-A5E1-970A7CDF57A0}"
 EndProject
@@ -50,5 +50,8 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CFE89F49-9CAA-415E-B562-E594F6D0B976}
+		RESX_CultureCountyOverrides = pt=pt-BR
+		RESX_NeutralResourcesLanguage = es-BR
+		RESX_PrefixTranslations = False
 	EndGlobalSection
 EndGlobal

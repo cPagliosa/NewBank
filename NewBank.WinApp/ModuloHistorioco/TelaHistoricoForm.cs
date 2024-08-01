@@ -1,6 +1,7 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
 using NewBank.Dominio.ModuloOperacao;
+using NewBank.Dominio.Resources;
 using NewBank.WinApp.Compartilhado;
 
 namespace NewBank.WinApp.ModuloHistorioco
@@ -20,6 +21,16 @@ namespace NewBank.WinApp.ModuloHistorioco
             grid.ConfigurarGridZebrado();
         }
 
+        private void LocalizeForm()
+        {
+            // Defina textos localizados para os controles do formulário
+            this.Text = Lingua.Historioco;
+            this.btnPdf.Text = Lingua.GerarPdf;
+            this.btnVoltar.Text = Lingua.Voltar;
+
+
+        }
+
         public void AtualizarRegistros(List<Operacao> contas)
         {
             grid.Rows.Clear();
@@ -36,11 +47,11 @@ namespace NewBank.WinApp.ModuloHistorioco
         {
             return new DataGridViewColumn[]
             {
-                new DataGridViewTextBoxColumn { DataPropertyName = "Conta", HeaderText = "Conta" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "Data", HeaderText = "Data" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "Decricao", HeaderText = "Decricão" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "Valor", HeaderText = "Valor" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "Saldo", HeaderText = "Saldo final" },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Conta", HeaderText = Lingua.MenuContas },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Data", HeaderText = Lingua.Data },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Decricao", HeaderText = Lingua.Descricao },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Valor", HeaderText = Lingua.Valor },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Saldo", HeaderText = Lingua.Saldo },
             };
         }
 
@@ -57,7 +68,7 @@ namespace NewBank.WinApp.ModuloHistorioco
         {
             this.operacao = Operacoes[0];
 
-            string caminho = @"C:\temp\NewBank\" + $"{operacao.Conta.Titular.Nome}_Extrato.pdf"; ;
+            string caminho = @"C:\temp\NewBank\" + $"{operacao.Conta.Titular.Nome}_{Lingua.Extrato}.pdf"; ;
 
             PdfWriter branco = PdfWriter.GetInstance(doc, new FileStream(caminho, FileMode.Create));
 
@@ -75,16 +86,16 @@ namespace NewBank.WinApp.ModuloHistorioco
 
             doc.Close();
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"O extrato foi criado com sucesso! no local: {caminho}");
+            TelaPrincipalForm.Instancia.AtualizarRodape($"{Lingua.ExtratoAvisoSuces}: {caminho}");
         }
 
         private string extrato()
         {
-            string extrato = $"Extrato das contas do titular: {operacao.Conta.Titular.Nome}\nSaldo atual: {operacao.Conta.Saldo}\n\n";
+            string extrato = $"{Lingua.ExtratoPdf}: {operacao.Conta.Titular.Nome}\n{Lingua.Saldo}: {operacao.Conta.Saldo}\n\n";
             foreach (Operacao o in Operacoes)
             {
                 extrato += $"*************************************************\n";
-                extrato += $"Numero da conta: {o.Conta.Numero}\nData: {o.Data}\nDescrição: {o.Descricao}\nValor: {o.Valor}\n";
+                extrato += $"{Lingua.Numero}: {o.Conta.Numero}\n{Lingua.Data}: {o.Data}\n{Lingua.Descricao}: {o.Descricao}\n{Lingua.Valor}: {o.Valor}\n";
             }
             return extrato;
         }

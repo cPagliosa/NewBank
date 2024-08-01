@@ -1,4 +1,5 @@
 ﻿using NewBank.Dominio.ModoloContaCorrente;
+using NewBank.Dominio.Resources;
 using NewBank.WinApp.Compartilhado;
 
 namespace NewBank.WinApp.ModuloContaCorrente
@@ -33,10 +34,10 @@ namespace NewBank.WinApp.ModuloContaCorrente
             return new DataGridViewColumn[]
             {
                 new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "Titular", HeaderText = "Titular" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "Numero", HeaderText = "Numero" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "Saldo", HeaderText = "Saldo" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "Limite", HeaderText = "Limite" },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Titular", HeaderText = Lingua.Titular },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Numero", HeaderText = Lingua.Numero },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Saldo", HeaderText = Lingua.Saldo },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Limite", HeaderText = Lingua.Limite },
             };
         }
     }

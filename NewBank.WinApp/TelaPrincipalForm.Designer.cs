@@ -80,7 +80,7 @@
             stripMenuCorrente.BackColor = Color.FromArgb(57, 62, 70);
             stripMenuCorrente.ForeColor = Color.FromArgb(0, 173, 181);
             stripMenuCorrente.Name = "stripMenuCorrente";
-            stripMenuCorrente.Size = new Size(224, 32);
+            stripMenuCorrente.Size = new Size(186, 32);
             stripMenuCorrente.Text = "Corrente";
             stripMenuCorrente.Click += stripMenuDisciplina_Click;
             // 
@@ -89,7 +89,7 @@
             stripMenuSalario.BackColor = Color.FromArgb(57, 62, 70);
             stripMenuSalario.ForeColor = Color.FromArgb(0, 173, 181);
             stripMenuSalario.Name = "stripMenuSalario";
-            stripMenuSalario.Size = new Size(224, 32);
+            stripMenuSalario.Size = new Size(186, 32);
             stripMenuSalario.Text = "Salario";
             stripMenuSalario.Click += stripMenuMateria_Click;
             // 
@@ -98,7 +98,7 @@
             stripMenuPoupanca.BackColor = Color.FromArgb(57, 62, 70);
             stripMenuPoupanca.ForeColor = Color.FromArgb(0, 173, 181);
             stripMenuPoupanca.Name = "stripMenuPoupanca";
-            stripMenuPoupanca.Size = new Size(224, 32);
+            stripMenuPoupanca.Size = new Size(186, 32);
             stripMenuPoupanca.Text = "Poupança";
             stripMenuPoupanca.Click += stripMenuQuestoes_Click;
             // 
@@ -117,7 +117,7 @@
             linguaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { ptbrToolStripMenuItem, enusToolStripMenuItem, esToolStripMenuItem });
             linguaToolStripMenuItem.ForeColor = Color.FromArgb(0, 173, 181);
             linguaToolStripMenuItem.Name = "linguaToolStripMenuItem";
-            linguaToolStripMenuItem.Size = new Size(224, 32);
+            linguaToolStripMenuItem.Size = new Size(159, 32);
             linguaToolStripMenuItem.Text = "Lingua";
             // 
             // ptbrToolStripMenuItem
@@ -125,24 +125,27 @@
             ptbrToolStripMenuItem.BackColor = Color.FromArgb(57, 62, 70);
             ptbrToolStripMenuItem.ForeColor = Color.FromArgb(0, 173, 181);
             ptbrToolStripMenuItem.Name = "ptbrToolStripMenuItem";
-            ptbrToolStripMenuItem.Size = new Size(224, 32);
-            ptbrToolStripMenuItem.Text = "pt-br";
+            ptbrToolStripMenuItem.Size = new Size(192, 32);
+            ptbrToolStripMenuItem.Text = "Portugues";
+            ptbrToolStripMenuItem.Click += ptbrToolStripMenuItem_Click;
             // 
             // enusToolStripMenuItem
             // 
             enusToolStripMenuItem.BackColor = Color.FromArgb(57, 62, 70);
             enusToolStripMenuItem.ForeColor = Color.FromArgb(0, 173, 181);
             enusToolStripMenuItem.Name = "enusToolStripMenuItem";
-            enusToolStripMenuItem.Size = new Size(224, 32);
-            enusToolStripMenuItem.Text = "en-us";
+            enusToolStripMenuItem.Size = new Size(192, 32);
+            enusToolStripMenuItem.Text = "Ingles";
+            enusToolStripMenuItem.Click += enusToolStripMenuItem_Click;
             // 
             // esToolStripMenuItem
             // 
             esToolStripMenuItem.BackColor = Color.FromArgb(57, 62, 70);
             esToolStripMenuItem.ForeColor = Color.FromArgb(0, 173, 181);
             esToolStripMenuItem.Name = "esToolStripMenuItem";
-            esToolStripMenuItem.Size = new Size(224, 32);
-            esToolStripMenuItem.Text = "es-";
+            esToolStripMenuItem.Size = new Size(192, 32);
+            esToolStripMenuItem.Text = "Frances";
+            esToolStripMenuItem.Click += esToolStripMenuItem_Click;
             // 
             // toolStrip1
             // 
@@ -222,8 +225,8 @@
             lblTipoCadastro.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTipoCadastro.ForeColor = Color.FromArgb(0, 173, 181);
             lblTipoCadastro.Name = "lblTipoCadastro";
-            lblTipoCadastro.Size = new Size(162, 51);
-            lblTipoCadastro.Text = "Tipo Cadastro";
+            lblTipoCadastro.Size = new Size(122, 51);
+            lblTipoCadastro.Text = "New Bank";
             // 
             // statusStrip1
             // 
@@ -265,7 +268,7 @@
             MinimizeBox = false;
             Name = "TelaPrincipalForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Gerador de Testes";
+            Text = "New Bank";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             toolStrip1.ResumeLayout(false);

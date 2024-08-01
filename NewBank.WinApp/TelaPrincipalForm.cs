@@ -3,6 +3,7 @@ using NewBank.Dominio.ModuloContaPoupanca;
 using NewBank.Dominio.ModuloContaSalario;
 using NewBank.Dominio.ModuloHistorioco;
 using NewBank.Dominio.ModuloOperacao;
+using NewBank.Dominio.Resources;
 using NewBank.Infra.Compartilhado;
 using NewBank.Infra.ModuloContaCorrente;
 using NewBank.Infra.ModuloContaPoupanca;
@@ -13,6 +14,8 @@ using NewBank.WinApp.Compartilhado;
 using NewBank.WinApp.ModuloContaCorrente;
 using NewBank.WinApp.ModuloContaPoupanca;
 using NewBank.WinApp.ModuloContaSalario;
+using NewBank.WinApp.Properties;
+using System.Globalization;
 
 namespace NewBank.WinApp
 {
@@ -32,6 +35,7 @@ namespace NewBank.WinApp
         public TelaPrincipalForm()
         {
             InitializeComponent();
+            LocalizeForm();
 
             lblTipoCadastro.Text = string.Empty;
             Instancia = this;
@@ -50,9 +54,35 @@ namespace NewBank.WinApp
 
         }
 
+        private void LocalizeForm()
+        {
+            // Defina textos localizados para os controles do formulário
+            this.telasToolStripMenuItem.Text = Lingua.MenuContas;
+            this.opçoesToolStripMenuItem.Text = Lingua.MenuOpcao;
+            this.linguaToolStripMenuItem.Text = Lingua.MenuLingua;
+            this.stripMenuCorrente.Text = Lingua.Corrente;
+            this.stripMenuSalario.Text = Lingua.Salario;
+            this.stripMenuPoupanca.Text = Lingua.Poupanca;
+            this.linguaToolStripMenuItem.Text = Lingua.MenuLingua;
+            this.ptbrToolStripMenuItem.Text = Lingua.pt;
+            this.esToolStripMenuItem.Text = Lingua.en;
+            this.esToolStripMenuItem.Text = Lingua.fr;
+        }
+
+        private void ChangeLanguage(string cultureCode)
+        {
+            // Definir a nova cultura
+            CultureInfo newCulture = new CultureInfo(cultureCode);
+            Thread.CurrentThread.CurrentUICulture = newCulture;
+            Thread.CurrentThread.CurrentCulture = newCulture;
+
+            // Recarregar textos localizados
+            LocalizeForm();
+        }
+
         private void ConfigurarTelaPrincipal(ControladorBase controladorSelecionado)
         {
-            lblTipoCadastro.Text = "Cadastro de " + controladorSelecionado.TipoCadastro;
+            lblTipoCadastro.Text = controladorSelecionado.TipoCadastro;
 
             ConfigurarToolBox(controladorSelecionado);
             ConfigurarListagem(controladorSelecionado);
@@ -92,7 +122,7 @@ namespace NewBank.WinApp
         //Telas
         private void stripMenuDisciplina_Click(object sender, EventArgs e)
         {
-            this.controlador = new ControladorContaCorrente(repositorioContaCorrente,repositorioHistorioco,repositorioOperacao);
+            this.controlador = new ControladorContaCorrente(repositorioContaCorrente, repositorioHistorioco, repositorioOperacao);
 
             ConfigurarTelaPrincipal(controlador);
             DesiblitarMenus();
@@ -146,6 +176,21 @@ namespace NewBank.WinApp
             this.btnOperacao.Visible = true;
             this.btnHistorico.Visible = true;
             this.Separator2.Visible = true;
+        }
+
+        private void ptbrToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+                ChangeLanguage("pt-BR");
+        }
+
+        private void enusToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+                ChangeLanguage("en-US");
+        }
+
+        private void esToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangeLanguage("fr-FR");
         }
     }
 }

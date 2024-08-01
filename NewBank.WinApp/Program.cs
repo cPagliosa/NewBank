@@ -1,16 +1,22 @@
+using System.Globalization;
+using NewBank.Dominio.Resources;
+
 namespace NewBank.WinApp
 {
     internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// usar ResX Resource Manager traduçoes
-        /// </summary>
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
+
+            // Obter a cultura do sistema
+            CultureInfo systemCulture = CultureInfo.CurrentUICulture;
+
+            // Definir a cultura atual do thread para a cultura do sistema
+            Thread.CurrentThread.CurrentUICulture = systemCulture;
+            Thread.CurrentThread.CurrentCulture = systemCulture;
+
+            
             ApplicationConfiguration.Initialize();
             Application.Run(new TelaPrincipalForm());
         }

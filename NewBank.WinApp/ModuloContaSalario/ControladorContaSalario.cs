@@ -1,7 +1,10 @@
 ﻿using NewBank.Dominio.ModuloContaSalario;
 using NewBank.Dominio.ModuloHistorioco;
 using NewBank.Dominio.ModuloOperacao;
+using NewBank.Dominio.Resources;
 using NewBank.WinApp.Compartilhado;
+using NewBank.WinApp.ModuloHistorioco;
+using NewBank.WinApp.ModuloOperacao;
 
 
 namespace NewBank.WinApp.ModuloContaSalario
@@ -12,10 +15,10 @@ namespace NewBank.WinApp.ModuloContaSalario
         private IRepositorioHistorioco repositorioHistorioco;
         private TabelaContaSalario tabelaContaSalario;
 
-        public override string TipoCadastro { get { return "Conta Salario"; } }
-        public override string ToolTipAdicionar { get { return "Cadastrar uma nova Conta Salario"; } }
-        public override string ToolTipEditar { get { return "Editar uma Conta Salario"; } }
-        public override string ToolTipExcluir { get { return "Excluir uma Conta Salario"; } }
+        public override string TipoCadastro { get { return Lingua.ContaSalario; } }
+        public override string ToolTipAdicionar { get { return Lingua.CadConta; } }
+        public override string ToolTipEditar { get { return Lingua.EdtConta; } }
+        public override string ToolTipExcluir { get { return Lingua.ExcConta; } }
 
         public ControladorContaSalario(IRepositorioContaSalario repositorioContaSalario, IRepositorioHistorioco repositorioHistorioco, IRepositorioOperacao repositorioOperacao)
         {
@@ -47,7 +50,7 @@ namespace NewBank.WinApp.ModuloContaSalario
 
             CarregarDadosTabela();
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"Uma conta salario do titular: \"{novaConta.Titular.Nome}\" foi criada com sucesso!");
+            TelaPrincipalForm.Instancia.AtualizarRodape($"{Lingua.Resp1} \"{novaConta.Numero}\" {Lingua.AddRespP2}");
         }
 
         public override void Editar()
@@ -61,8 +64,8 @@ namespace NewBank.WinApp.ModuloContaSalario
             if (contaSelecionada == null)
             {
                 MessageBox.Show(
-                    "Não é possível realizar esta ação sem uma conta selecionada.",
-                    "Aviso",
+                    Lingua.SelecionarAviso,
+                    Lingua.Aviso,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning
                 );
@@ -82,7 +85,7 @@ namespace NewBank.WinApp.ModuloContaSalario
 
             CarregarDadosTabela();
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"Uma conta salario do titular: \"{contaSelecionada.Titular.Nome}\" foi editada com sucesso!");
+            TelaPrincipalForm.Instancia.AtualizarRodape($"{Lingua.Resp1} \"{contaSelecionada.Numero}\" {Lingua.EditRespP2}");
         }
 
         public override void Excluir()
@@ -94,8 +97,8 @@ namespace NewBank.WinApp.ModuloContaSalario
             if (contaSelecionada == null)
             {
                 MessageBox.Show(
-                    "Não é possível realizar esta ação sem uma conta selecionada.",
-                    "Aviso",
+                    Lingua.SelecionarAviso,
+                    Lingua.Aviso,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning
                 );
@@ -103,8 +106,8 @@ namespace NewBank.WinApp.ModuloContaSalario
             }
 
             DialogResult resposta = MessageBox.Show(
-                $"Você deseja realmente excluir a conta do titular:  \"{contaSelecionada.Titular.Nome}\"?",
-                "Confirmar Exclusão",
+                $"{Lingua.PerguntaExcluir} \"{contaSelecionada.Numero}\"?",
+                Lingua.ConfirmarExclusao,
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning
             );
@@ -116,23 +119,97 @@ namespace NewBank.WinApp.ModuloContaSalario
 
             CarregarDadosTabela();
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"Uma conta corrente do titular: \"{contaSelecionada.Titular.Nome}\" foi excluida com sucesso!");
+            TelaPrincipalForm.Instancia.AtualizarRodape($"{Lingua.Resp1} \"{contaSelecionada.Titular.Nome}\" {Lingua.ExRespP2}");
         }
 
         public override void Historioco()
         {
-            throw new NotImplementedException();
+            TelaHistoricoForm telaHistorico = new TelaHistoricoForm();
+
+            int idSelecionado = tabelaContaSalario.ObterRegistroSelecionado();
+
+            ContaSalario contaSelecionada = repositorioContaSalario.SelecionarPorId(idSelecionado);
+
+            List<Historioco> his = repositorioHistorioco.SelecionarTodos();
+
+            foreach (Historioco h in his)
+            {
+                if (contaSelecionada.Titular.Nome.Equals(h.Titular.Nome))
+                {
+                    telaHistorico.Operacoes = h.Operacoes;
+                    telaHistorico.AtualizarRegistros(h.Operacoes);
+                    break;
+                }
+            }
+
+            DialogResult resultado = telaHistorico.ShowDialog();
+
+            if (resultado != DialogResult.OK)
+                return;
+
+            CarregarDadosTabela();
+
         }
 
         public override void Operacao()
         {
-            throw new NotImplementedException();
+            int idSelecionado = tabelaContaSalario.ObterRegistroSelecionado();
+
+            ContaSalario contaSelecionada = repositorioContaSalario.SelecionarPorId(idSelecionado);
+
+            TelaOperacaoForm telaOperacao = new TelaOperacaoForm(null, contaSelecionada, null, 2);
+
+            DialogResult resultado = telaOperacao.ShowDialog();
+
+            if (resultado != DialogResult.OK)
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape(Lingua.NPssOpera);
+                return;
+            }
+
+            Dominio.ModuloOperacao.Operacao operacaoFeita = telaOperacao.Operacao;
+
+            ContaSalario contaEditada = telaOperacao.Salario;
+
+            this.GerarHistorioco(operacaoFeita, contaEditada);
+
+            repositorioContaSalario.Editar(contaSelecionada.Id, contaEditada);
+
+            CarregarDadosTabela();
+
+            TelaPrincipalForm.Instancia.AtualizarRodape(Lingua.OperacaoSucesso);
         }
         private void CarregarDadosTabela()
         {
             List<ContaSalario> disciplina = this.repositorioContaSalario.SelecionarTodos();
 
             tabelaContaSalario.AtualizarRegistros(disciplina);
+        }
+
+        private void GerarHistorioco(Operacao opera, ContaSalario conta)
+        {
+            List<Historioco> historiocos = repositorioHistorioco.SelecionarTodos();
+
+            bool achado = false;
+            foreach (Historioco h in historiocos)
+            {
+                if (conta.Titular.Nome.Equals(h.Titular.Nome))
+                {
+                    h.Operacoes.Add(opera);
+                    repositorioHistorioco.Editar(h.Id, h);
+                    achado = true;
+                    break;
+                }
+            }
+
+            if (!achado)
+            {
+                List<Dominio.ModuloOperacao.Operacao> operacaos = new List<Operacao>();
+                operacaos.Add(opera);
+                Historioco novo = new Historioco(conta.Titular, operacaos);
+                repositorioHistorioco.Cadastrar(novo);
+            }
+
         }
     }
 }

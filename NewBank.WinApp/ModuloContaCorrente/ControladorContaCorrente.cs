@@ -2,6 +2,7 @@
 using NewBank.Dominio.ModuloContaCorrente;
 using NewBank.Dominio.ModuloHistorioco;
 using NewBank.Dominio.ModuloOperacao;
+using NewBank.Dominio.Resources;
 using NewBank.WinApp.Compartilhado;
 using NewBank.WinApp.ModuloHistorioco;
 using NewBank.WinApp.ModuloOperacao;
@@ -14,10 +15,10 @@ namespace NewBank.WinApp.ModuloContaCorrente
         private IRepositorioHistorioco repositorioHistorioco;
         private TabelaContaCorrente tabelaContaCorrente;
 
-        public override string TipoCadastro { get { return "Conta Corrente"; } }
-        public override string ToolTipAdicionar { get { return "Cadastrar uma nova Conta Corrente"; } }
-        public override string ToolTipEditar { get { return "Editar uma Conta Corrente"; } }
-        public override string ToolTipExcluir { get { return "Excluir uma Conta Corrente"; } }
+        public override string TipoCadastro { get { return Lingua.ContaCorrente; } }
+        public override string ToolTipAdicionar { get { return Lingua.CadConta; } }
+        public override string ToolTipEditar { get { return Lingua.EdtConta; } }
+        public override string ToolTipExcluir { get { return Lingua.ExcConta; } }
 
 
 
@@ -51,7 +52,7 @@ namespace NewBank.WinApp.ModuloContaCorrente
 
             CarregarDadosTabela();
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"Uma conta corrente do titular: \"{novaConta.Titular.Nome}\" foi criada com sucesso!");
+            TelaPrincipalForm.Instancia.AtualizarRodape($"{Lingua.Resp1} \"{novaConta.Numero}\" {Lingua.AddRespP2}");
         }
 
         public override void Editar()
@@ -65,8 +66,8 @@ namespace NewBank.WinApp.ModuloContaCorrente
             if (contaSelecionada == null)
             {
                 MessageBox.Show(
-                    "Não é possível realizar esta ação sem uma conta selecionada.",
-                    "Aviso",
+                    Lingua.SelecionarAviso,
+                    Lingua.Aviso,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning
                 );
@@ -86,7 +87,7 @@ namespace NewBank.WinApp.ModuloContaCorrente
 
             CarregarDadosTabela();
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"Uma conta corrente do titular: \"{contaSelecionada.Titular.Nome}\" foi editada com sucesso!");
+            TelaPrincipalForm.Instancia.AtualizarRodape($"{Lingua.Resp1} \"{contaSelecionada.Numero}\" {Lingua.EditRespP2}");
         }
 
         public override void Excluir()
@@ -98,8 +99,8 @@ namespace NewBank.WinApp.ModuloContaCorrente
             if (contaSelecionada == null)
             {
                 MessageBox.Show(
-                    "Não é possível realizar esta ação sem uma conta selecionada.",
-                    "Aviso",
+                    Lingua.SelecionarAviso,
+                    Lingua.Aviso,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning
                 );
@@ -107,8 +108,8 @@ namespace NewBank.WinApp.ModuloContaCorrente
             }
 
             DialogResult resposta = MessageBox.Show(
-                $"Você deseja realmente excluir a conta do titular:  \"{contaSelecionada.Titular.Nome}\"?",
-                "Confirmar Exclusão",
+                $"{Lingua.PerguntaExcluir} \"{contaSelecionada.Numero}\"?",
+                Lingua.ConfirmarExclusao,
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning
             );
@@ -120,7 +121,7 @@ namespace NewBank.WinApp.ModuloContaCorrente
 
             CarregarDadosTabela();
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"Uma conta corrente do titular: \"{contaSelecionada.Titular.Nome}\" foi excluida com sucesso!");
+            TelaPrincipalForm.Instancia.AtualizarRodape($"{Lingua.Resp1} \"{contaSelecionada.Numero}\" {Lingua.ExRespP2}");
         }
 
         public override void Historioco()
@@ -135,7 +136,7 @@ namespace NewBank.WinApp.ModuloContaCorrente
 
             foreach (Historioco h in his)
             {
-                if (contaSelecionada.Titular.Equals(h.Titular))
+                if (contaSelecionada.Titular.Nome.Equals(h.Titular.Nome))
                 {
                     telaHistorico.Operacoes = h.Operacoes;
                     telaHistorico.AtualizarRegistros(h.Operacoes);
@@ -164,7 +165,7 @@ namespace NewBank.WinApp.ModuloContaCorrente
 
             if (resultado != DialogResult.OK)
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape($"Não foi possivel realiza a operação");
+                TelaPrincipalForm.Instancia.AtualizarRodape(Lingua.NPssOpera);
                 return;
             }
 
@@ -178,7 +179,7 @@ namespace NewBank.WinApp.ModuloContaCorrente
 
             CarregarDadosTabela();
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"A operação foi realizado com sucesso");
+            TelaPrincipalForm.Instancia.AtualizarRodape(Lingua.OperacaoSucesso);
 
         }
 
